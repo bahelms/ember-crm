@@ -18,3 +18,5 @@
     # application.js.coffee
     #= require jquery_ujs
 
+    # add js/templates/application.js.emblem (or another template language)
+
