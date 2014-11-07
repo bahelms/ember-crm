@@ -39,6 +39,8 @@ App.Obj = Ember.Object.extend
 //computed alias; these functions do the same thing; Em is alias for Ember
   prop: ( -> @get("controller.prop") ).property("controller.prop")
   prop: Em.computed.alias "controller.prop"
+Exs:
+  Em.computed.equal "some.prop", "cat" // same as: if @get("some.prop") is "cat"
 
 ###Routing
 @route "some"
@@ -64,17 +66,63 @@ hooks:
 Ember.ObjectController (when fetching one model)
 Ember.ArrayController  (when fetching many models)
 Ember.Controller       (when fetching no models)
-action handlers for templates in actions {}
+action handlers for templates in actions object
 
 ###Views (wraps template in div (default) and sets id)
+TypeView looks for template name type.hbs
 hooks:
   willInsertElement()       //before view is inserted into DOM
   didInsertElement()
   willDestroyElement()      //before view is removed from DOM
 @get("controller.property") //gets view's controller property
+@get("element")             //gets the current element 
+@$(".someSelector")         //gets selected element and wraps it in jQuery
+
+Properties:
 tagName: "article"          //sets the wrapper type (p, ul, header...)
 classNames: ["names", ...]  //adds classes to wrapper 
-classNameBindings:
+templateName: "someTemplate"  // looks for someTemplate.hbs
+
+Bindings:
+classNameBindings: ["className"]
+classNameProp: function return value  // if true => class="classNameProp"
+                                      // if not boolean => class="returnValue"
+  Shortcut boolean syntax:
+  classNameBindings: ["isCat:meow:woof"]
+  isCat: Em.computed.equal "some.prop", "cat"  // if true => class="meow" else "woof"
+
+attributeBindings: ["someAttr"] OR ["propName:attrName"]
+someAttr: return value   // => someAttr=value
+propName: return value   // => attrName=value
+
+Event Handlers: listeners are applied to the entire view (see docs for all events)
+click: -> someAction   // fires some action on click
+
+###Templates (handlebars examples)
+Name: {{nameProp}}       // controller property
+Name: {{view.nameProp}}  // view property
+Handlebars does not allow && or || in if conditionals
+
+Loops: this refers to each element; this is implicit in emblem
+hbs                       emblem
+{{#each users}}           each users
+  {{this.userProp}}         userProp
+{{/each}}
+
+{{#each user in users}}   each user in users   
+  {{user.userProp}}         user.userProp
+{{/each}}
+(each element in controller) //ArrayController
+
+Helpers: (all in emblem syntax)
+Renders a specified template inside the current template
+render "user"   // instantiates UserController > UserView > user.js.emblem
+view "user"     // starts at UserView; skips controller
+partial "user"  // renders just user.js.emblem; skips view and controller
+link-to "user" userModel  // transistions to a new route
+
+Actions:
+h1 click="tickle"   // calls tickle method in controller.actions object on click
 
 ###Mixins
 /mixins/extraction.js.coffee

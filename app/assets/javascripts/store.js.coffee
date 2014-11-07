@@ -1,6 +1,10 @@
 # http://emberjs.com/guides/models/#toc_store
 # http://emberjs.com/guides/models/pushing-records-into-the-store/
 
+# Prepends all api requests with this namespace
+DS.RESTAdapter.reopen
+  namespace: "api/v1"
+
 App.Store = DS.Store.extend({
 
 })
