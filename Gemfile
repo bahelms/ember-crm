@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 ruby "2.1.3"
 
+gem "active_model_serializers", github: "rails-api/active_model_serializers", branch: "0-8-stable"
 gem "bcrypt", "~> 3.1.7"
 gem "coffee-rails", "~> 4.0.0"
 gem "ember-rails", "~> 0.15.0"
