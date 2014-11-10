@@ -5,4 +5,5 @@ App.Router.reopen
   rootURL: "/"
 
 App.Router.map ->
+  @resource "leads", path: "/"
 

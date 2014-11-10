@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %title
+      EmberCrm
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    = yield
+    #ember_app
+

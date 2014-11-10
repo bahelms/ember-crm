@@ -22,13 +22,13 @@
 
 ###Ember Objects
 someObject = Ember.Object.create()  "new/initialize"
-someObject.get("someProperty")
+someObject.get("someProperty")    
 
 App.NewClass = Ember.Object.extend()  "subclass"
 App.NewClass.reopen( new properties etc )
-App.NewClass.reopenClass(add class properties)  "App.NewClass.property()"
+App.NewClass.reopenClass(add class properties)  "App.NewClass.property()"    
 
-All objects call "init()" on creation; call @_super() if overriding
+All objects call "init()" on creation; call @_super() if overriding    
 
 ###Computed properties and observers
 App.Obj = Ember.Object.extend
@@ -131,3 +131,10 @@ App.Extraction = Ember.Mixin.create
 App.SomeController = Ember.ObjectController.extend App.Extraction,
   ...
 
+###Ember Data (types: string, number, boolean, date)
+App.SomeModel = DS.Model.extend
+  firstName: DS.attr("data type")
+
+DS.Model: save(), rollback(), destroyRecord()
+Creating a DS.Model instance: 
+  @store.createRecord("someModel", attr1: "hey", ...)
