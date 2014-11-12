@@ -119,7 +119,7 @@ Renders a specified template inside the current template
 render "user"   // instantiates UserController > UserView > user.js.emblem
 view "user"     // starts at UserView; skips controller
 partial "user"  // renders just user.js.emblem; skips view and controller
-link-to "user" userModel  // transistions to a new route
+link-to "text" route model  // transistions to a new route
 
 Actions:
 h1 click="tickle"   // calls tickle method in controller.actions object on click
