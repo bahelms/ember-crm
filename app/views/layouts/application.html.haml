@@ -4,7 +4,8 @@
     %title
       EmberCrm
     = stylesheet_link_tag "application"
-    = javascript_include_tag "application"
+    = javascript_include_tag "rails_app"
+    = load_ember_app(yield(:load_ember_app?))
     = csrf_meta_tags
   %body
     = yield
