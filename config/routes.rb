@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/ember_crm", to: "home#ember_crm"
   get "*path", to: "home#index"
 end
 

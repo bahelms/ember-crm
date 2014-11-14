@@ -6,5 +6,5 @@
 #= require_tree ./components
 #= require_tree ./ember_crm/templates
 #= require_tree ./ember_crm/routes
-#= require ./router
+#= require ./ember_crm/router
 #= require_self
