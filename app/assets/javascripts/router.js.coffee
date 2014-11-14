@@ -2,7 +2,7 @@
 
 App.Router.reopen
   location: "auto"
-  rootURL: "/"
+  rootURL: "/ember_crm"
 
 App.Router.map ->
   @resource "leads", path: "/", ->
